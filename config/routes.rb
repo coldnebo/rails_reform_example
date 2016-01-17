@@ -1,5 +1,5 @@
 RailsReformExample::Application.routes.draw do
-  get "conditional_forms/choose"
+  match "conditional_forms/choose", via: [:get, :post]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

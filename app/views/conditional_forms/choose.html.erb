@@ -1,2 +1,21 @@
-<h1>ConditionalForms#choose</h1>
-<p>Find me in app/views/conditional_forms/choose.html.erb</p>
+<h1>An Example of Conditional Validation</h1>
+
+<p>Welcome, padawan.  Tell me about yourself...</p>
+
+<%= form_for(@form, url: conditional_forms_choose_path, builder: ChooseFormBuilder) do |f| %>
+
+  <%= field_set_tag do %>
+    <legend><%= f.label(:disposition) %></legend>
+    <%= f.composite(:light) {|k| f.label(k) + f.radio_button(:disposition, k) + f.errors_for(:disposition) } %>
+    <%= f.composite(:dark) {|k| f.label(k) + f.radio_button(:disposition, k) } %>
+  <% end %>
+
+  <%= f.composite(:jedi_name) {|k| f.label(k) + f.text_field(k) + f.errors_for(k) } %>
+
+  <%= f.composite(:sith_name) {|k| f.label(k) + f.text_field(k) + f.errors_for(k) } %>
+
+  <%= f.submit %>
+  <%= f.button('Reset', type: :reset) %>
+
+<% end %>
+

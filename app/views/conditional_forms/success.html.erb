@@ -1,0 +1,7 @@
+
+<p>Welcome to the <%= model.disposition %> side,
+<% if model.disposition == "light" %>
+  Jedi <%= model.jedi_name %>!
+<% else %>
+  Sith <%= model.sith_name %>!
+<% end %>

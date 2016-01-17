@@ -37,6 +37,9 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.10.0)
+    disposable (0.0.9)
+      representable (~> 2.0)
+      uber
     erubis (2.7.0)
     execjs (2.6.0)
     hike (1.2.3)
@@ -50,7 +53,10 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.25.1)
+    mini_portile2 (2.0.0)
     multi_json (1.11.2)
+    nokogiri (1.6.7.1)
+      mini_portile2 (~> 2.0.0.rc2)
     polyglot (0.3.5)
     rack (1.4.7)
     rack-cache (1.5.1)
@@ -77,6 +83,15 @@ GEM
     rake (10.5.0)
     rdoc (3.12.2)
       json (~> 1.4)
+    reform (1.1.1)
+      activemodel
+      disposable (~> 0.0.5)
+      representable (~> 2.0.3)
+      uber (~> 0.0.8)
+    representable (2.0.4)
+      multi_json
+      nokogiri
+      uber (~> 0.0.7)
     sass (3.4.21)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -94,6 +109,7 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.46)
+    uber (0.0.15)
     uglifier (2.7.2)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
@@ -105,6 +121,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   jquery-rails
   rails (= 3.2.22)
+  reform (~> 1.1.1)
   sass-rails (~> 3.2.3)
   sqlite3
   uglifier (>= 1.0.3)
