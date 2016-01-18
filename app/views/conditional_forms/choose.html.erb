@@ -4,18 +4,43 @@
 
 <%= form_for(@form, url: conditional_forms_choose_path, builder: ChooseFormBuilder) do |f| %>
 
-  <%= field_set_tag do %>
+  <%= field_set_tag(nil, id: :disposition) do %>
     <legend><%= f.label(:disposition) %></legend>
     <%= f.composite(:light) {|k| f.label(k) + f.radio_button(:disposition, k) + f.errors_for(:disposition) } %>
     <%= f.composite(:dark) {|k| f.label(k) + f.radio_button(:disposition, k) } %>
   <% end %>
 
-  <%= f.composite(:jedi_name) {|k| f.label(k) + f.text_field(k) + f.errors_for(k) } %>
+  <%= f.composite(:jedi_name, class: 'invisible') {|k| f.label(k) + f.text_field(k) + f.errors_for(k) } %>
 
-  <%= f.composite(:sith_name) {|k| f.label(k) + f.text_field(k) + f.errors_for(k) } %>
+  <%= f.composite(:sith_name, class: 'invisible') {|k| f.label(k) + f.text_field(k) + f.errors_for(k) } %>
 
   <%= f.submit %>
   <%= f.button('Reset', type: :reset) %>
+  <%= link_to('Cancel', url: conditional_forms_choose_path) %>
 
 <% end %>
 
+<script type="text/javascript">
+$(function(){
+  var conditional_display = function(){
+    var checked = $.map( $('#disposition input:checked'), function(e){return e.value});
+    $('#jedi_name').addClass("invisible");
+    $('#sith_name').addClass("invisible");
+
+    if ($.inArray('light', checked) > -1) {
+      $('#jedi_name').removeClass("invisible");
+    } 
+    if ($.inArray('dark', checked) > -1) {
+      $('#sith_name').removeClass("invisible");
+    } 
+  };
+
+  // on page load, run it.
+  conditional_display();
+
+  // on disposition change, run it.
+  $('#disposition').on('change.example', 'input', conditional_display);
+
+
+});
+</script>

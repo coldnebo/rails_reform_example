@@ -1,8 +1,10 @@
 class ChooseFormBuilder < ActionView::Helpers::FormBuilder
   delegate :content_tag, to: :@template
 
-  def composite(k)
-    content_tag(:div, yield(k), class: 'composite')
+  def composite(k, html_options={})
+    html_options.merge!(id: k)
+    html_options.merge!(class: "composite #{html_options[:class]}" )
+    content_tag(:div, yield(k), html_options)
   end
 
   def errors_for(method)

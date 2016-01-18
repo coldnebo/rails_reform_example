@@ -3,22 +3,18 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 div.composite { 
-
-  * { 
-    display: inline-block; 
-  }
+  * { display: inline-block; }
 
   div.field_with_errors {
-
     input, select, textarea {
       border-color: red;
     }
-
   }
 
   .field_error { 
     padding-left: 1em;
     color: red; 
   }
-
 }
+
+.invisible { display: none; }
